@@ -2,7 +2,7 @@
 
 This is a Proxy Server for Node.js submitted as the [pre-work](http://learning.coderschool.vn/snippets/_intro_to_nodejs/prework) requirement for CoderSchool.
 
-Time spent: 10
+Time spent: 14
 
 Completed:
 
@@ -112,7 +112,7 @@ The port of the destination server. Defaults to `80` or `8000` when a host is no
 
 A single url that overrides the above. E.g., `http://www.google.com`
 
-##### `--logfile`
+##### `--log`
 
 Specify a file path to redirect logging to.
 
