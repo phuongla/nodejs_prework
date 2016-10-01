@@ -2,7 +2,7 @@
 
 This is a Proxy Server for Node.js submitted as the [pre-work](http://learning.coderschool.vn/snippets/_intro_to_nodejs/prework) requirement for CoderSchool.
 
-Time spent: 14
+Time spent: 18
 
 Completed:
 
@@ -11,9 +11,9 @@ Completed:
 * [x] Required: The destination server is configurable via the `--host`, `--port`  or `--url` arguments
 * [x] Required: The destination server is configurable via the `x-destination-url` header
 * [x] Required: Client requests and respones are printed to stdout
-* [x] Required: The `--logfile` argument outputs all logs to the file specified instead of stdout
+* [x] Required: The `--logFile` argument outputs all logs to the file specified instead of stdout
 * [] Optional: The `--exec` argument proxies stdin/stdout to/from the destination program
-* [x] Optional: The `--loglevel` argument sets the logging chattiness
+* [x] Optional: The `--logLevel` argument sets the logging chattiness
 * [x] Optional: Supports HTTPS
 * [x] Optional: `-h` argument prints CLI API
 * [x] Optional: Tweak the log styling, play with colors, spacing and additional data
