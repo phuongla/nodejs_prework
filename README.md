@@ -13,9 +13,10 @@ Completed:
 * [x] Required: Client requests and respones are printed to stdout
 * [x] Required: The `--logfile` argument outputs all logs to the file specified instead of stdout
 * [] Optional: The `--exec` argument proxies stdin/stdout to/from the destination program
-* [] Optional: The `--loglevel` argument sets the logging chattiness
-* [] Optional: Supports HTTPS
-* [] Optional: `-h` argument prints CLI API
+* [x] Optional: The `--loglevel` argument sets the logging chattiness
+* [x] Optional: Supports HTTPS
+* [x] Optional: `-h` argument prints CLI API
+* [x] Optional: Tweak the log styling, play with colors, spacing and additional data
 
 Walkthrough Gif:
 [Add walkthrough.gif to the project root]
@@ -35,33 +36,29 @@ npm start
 ### Echo Server:
 
 ```bash
-curl -v -X POST http://127.0.0.1:8000 -d "hello self" -H "x-asdf: yodawg"
-Note: Unnecessary use of -X or --request, POST is already inferred.
-* Rebuilt URL to: http://127.0.0.1:8000/
+curl -v http://localhost:8000 -d "hello vietnam"
+* Rebuilt URL to: http://localhost:8000/
 *   Trying 127.0.0.1...
-* TCP_NODELAY set
-* Connected to 127.0.0.1 (127.0.0.1) port 8000 (#0)
+* Connected to localhost (127.0.0.1) port 8000 (#0)
 > POST / HTTP/1.1
-> Host: 127.0.0.1:8000
-> User-Agent: curl/7.50.3
+> Host: localhost:8000
+> User-Agent: curl/7.43.0
 > Accept: */*
-> x-asdf: yodawg
-> Content-Length: 10
+> Content-Length: 13
 > Content-Type: application/x-www-form-urlencoded
->
-* upload completely sent off: 10 out of 10 bytes
+> 
+* upload completely sent off: 13 out of 13 bytes
 < HTTP/1.1 200 OK
-< host: 127.0.0.1:8000
-< user-agent: curl/7.50.3
+< host: localhost:8000
+< user-agent: curl/7.43.0
 < accept: */*
-< x-asdf: yodawg
-< content-length: 10
+< content-length: 13
 < content-type: application/x-www-form-urlencoded
-< Date: Fri, 30 Sep 2016 06:31:22 GMT
+< Date: Sat, 01 Oct 2016 10:01:45 GMT
 < Connection: keep-alive
-<
-hello self* Curl_http_done: called premature == 0
-* Connection #0 to host 127.0.0.1 left intact
+< 
+* Connection #0 to host localhost left intact
+hello vietnam
 ```
 
 ### Proxy Server:
@@ -69,29 +66,63 @@ hello self* Curl_http_done: called premature == 0
 Port 8001 will proxy to the echo server on port 8000.
 
 ```bash
-curl -v http://127.0.0.1:8001/asdf -d "hello proxy"
+curl -v http://localhost:8001 -d "hello vietnam"
+* Rebuilt URL to: http://localhost:8001/
 *   Trying 127.0.0.1...
-* TCP_NODELAY set
-* Connected to 127.0.0.1 (127.0.0.1) port 8001 (#0)
-> POST /asdf HTTP/1.1
-> Host: 127.0.0.1:8001
-> User-Agent: curl/7.50.3
+* Connected to localhost (127.0.0.1) port 8001 (#0)
+> POST / HTTP/1.1
+> Host: localhost:8001
+> User-Agent: curl/7.43.0
 > Accept: */*
-> Content-Length: 11
+> Content-Length: 13
 > Content-Type: application/x-www-form-urlencoded
->
-* upload completely sent off: 11 out of 11 bytes
+> 
+* upload completely sent off: 13 out of 13 bytes
 < HTTP/1.1 200 OK
-< host: 127.0.0.1:8001
-< user-agent: curl/7.50.3
+< host: localhost:8001
+< user-agent: curl/7.43.0
 < accept: */*
-< content-length: 11
+< content-length: 13
 < content-type: application/x-www-form-urlencoded
 < connection: close
-< date: Fri, 30 Sep 2016 06:33:06 GMT
-<
-hello proxy* Curl_http_done: called premature == 0
+< date: Sat, 01 Oct 2016 09:57:53 GMT
+< 
 * Closing connection 0
+hello vietnam
+```
+
+
+### Proxy Server (ssl protocol):
+
+Port 9001 will proxy to the ssl echo server on port 9000.
+
+```bash
+curl -v -k https://localhost:9001 -d "hello vietnam"
+* Rebuilt URL to: https://localhost:9001/
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9001 (#0)
+* TLS 1.2 connection using TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+* Server certificate: localhost
+* Server certificate: ca
+> POST / HTTP/1.1
+> Host: localhost:9001
+> User-Agent: curl/7.43.0
+> Accept: */*
+> Content-Length: 13
+> Content-Type: application/x-www-form-urlencoded
+> 
+* upload completely sent off: 13 out of 13 bytes
+< HTTP/1.1 200 OK
+< host: localhost:9001
+< user-agent: curl/7.43.0
+< accept: */*
+< content-length: 13
+< content-type: application/x-www-form-urlencoded
+< connection: close
+< date: Sat, 01 Oct 2016 10:05:25 GMT
+< 
+* Closing connection 0
+hello vietnam
 ```
 
 ### Configuration:

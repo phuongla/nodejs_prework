@@ -1,0 +1,17 @@
+{
+  "name": "nodejs_prework",
+  "version": "1.0.0",
+  "description": "prework at coder school",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js --host=127.0.0.1 --port=8000 --logLevel=Debug",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "phuongle",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "request": "^2.75.0",
+    "yargs": "^3.32.0"
+  }
+}
