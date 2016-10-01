@@ -131,6 +131,10 @@ hello vietnam
 
 The following CLI arguments are supported:
 
+##### `--h, --help`
+
+Show all command information.
+
 ##### `--host`
 
 The host of the destination server. Defaults to `127.0.0.1`.
@@ -146,6 +150,7 @@ A single url that overrides the above. E.g., `http://www.google.com`
 ##### `--logFile`
 
 Specify a file path to redirect logging to.
+
 
 #### Headers
 
